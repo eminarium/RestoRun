@@ -24,6 +24,8 @@ default: &default
 development:
   <<: *default
   database: Restorun_development
+  username: <%= Rails.application.credentials.DB_USERNAME %>
+  password: <%= Rails.application.credentials.DB_PASSWORD %> 
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,6 +60,8 @@ development:
 test:
   <<: *default
   database: Restorun_test
+  username: <%= Rails.application.credentials.DB_USERNAME %>
+  password: <%= Rails.application.credentials.DB_PASSWORD %> 
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,5 +86,8 @@ test:
 production:
   <<: *default
   database: Restorun_production
-  username: Restorun
-  password: <%= ENV["RESTORUN_DATABASE_PASSWORD"] %>
+  username: <%= Rails.application.credentials.DB_USERNAME %>
+  password: <%= Rails.application.credentials.DB_PASSWORD %> 
+    
+  # username: Restorun
+  # password: <%= ENV["RESTORUN_DATABASE_PASSWORD"] %>
