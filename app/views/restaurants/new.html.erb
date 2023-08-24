@@ -1,0 +1,11 @@
+<main class="container">
+  <%= turbo_frame_tag "modal" do %>
+    <h1 class="display-6 ms-3 mt-2">
+      New Restaurant
+    </h1>
+
+    <div class="modal-body">
+      <%= render "form", restaurant: @restaurant %>
+    </div>
+  <% end %>
+</main>

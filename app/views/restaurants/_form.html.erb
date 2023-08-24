@@ -1,0 +1,43 @@
+<%= form_with(model: restaurant, class: "row d-flex justify-content-between") do |form| %>
+  <% if restaurant.errors.any? %>
+    <div style="color: red">
+      <h3><%= pluralize(restaurant.errors.count, "error") %> prohibited this restaurant from being saved: </h3>
+      <ul>
+        <% restaurant.errors.messages.flatten.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div>
+      <%= form.label :title, class: "form-label" %>
+      <%= form.text_field :title, class: "form-control mb-2", placeholder: "Title..." %>
+    </div>
+
+    <div>
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: "form-control mb-2", placeholder: "Description..." %>
+    </div>
+
+    <div class="form-check form-switch ms-3 mb-2">
+      <%= form.label "Halal ?", for: "flexSwitchCheckIsHalal", class: "form-check-label" %>
+      <%= form.check_box :is_halal, type: "checkbox", role: "switch", id: "flexSwitchCheckIsHalal", class: "form-check-input" %>
+    </div>
+
+    <div class="form-check form-switch ms-3 mb-2">
+      <%= form.label "Kosher ?", for: "flexSwitchCheckIsKosher", class: "form-check-label" %>
+      <%= form.check_box :is_kosher, type: "checkbox", role: "switch", id: "flexSwitchCheckIsKosher", class: "form-check-input" %>
+    </div>
+    
+    <div class="form-check form-switch ms-3 mb-2">
+      <%= form.label "Vegetarian ?", for: "flexSwitchCheckIsVegetarian", class: "form-check-label" %>
+      <%= form.check_box :is_vegetarian, type: "checkbox", role: "switch", id: "flexSwitchCheckIsVegetarian", class: "form-check-input" %>
+    </div>    
+  
+    <div>
+      <%= form.button type: :submit, class: "btn btn-primary" %>
+      <%= link_to "Cancel", manager_dashboard_path(current_user.id), data: { turbo_frame: "_top" }, class: "btn btn-warning" %>
+    </div>
+
+<% end %>

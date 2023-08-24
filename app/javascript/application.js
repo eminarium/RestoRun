@@ -2,6 +2,6 @@
 import "@hotwired/turbo-rails"
 window.process = { env: {} }
 import "controllers"
-
-import "popper"
+// import "popper"
+import "@popperjs/core"
 import "bootstrap"

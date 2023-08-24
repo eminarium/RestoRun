@@ -1,0 +1,17 @@
+
+<h1 class="mb-5">Restaurant Manager Dashboard</h1>
+
+<%= turbo_frame_tag "#{current_user.id}-restaurant" do %>
+  <% unless current_user.has_restaurant? %>
+    <div class="row d-flex justify-content-between">
+      <p class="col-md col-xs-12 h5">You haven't started your restaurant yet. <br />Let's add one...</p>
+      <div class="col-md col-xs-12">
+        <%= link_to new_restaurant_path, class: "btn btn-primary", data: { turbo_frame: "modal" } do %>
+          <i class="fa-solid fa-plus"></i> New Restaurant
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <%= render "restaurant_info", restaurant: @restaurant %>
+  <% end %>
+<% end %>

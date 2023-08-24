@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script>window.process = { env: {} }</script>
   </head>
 
   <body>
@@ -16,6 +17,20 @@
       <p class="alert"><%= alert %></p>
 
       <%= yield %>
+
+      <div 
+        class="modal" 
+        tabindex="-1"
+        data-controller="modal"
+        data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <%= turbo_frame_tag "modal" %>
+          </div>
+        </div>
+      </div>
+
     </div>
   </body>
 </html>

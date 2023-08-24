@@ -1,0 +1,3 @@
+<%= turbo_stream.update "#{current_user.id}-restaurant" do %>
+  <%= render "users/restaurant_info", restaurant: @restaurant  %>
+<% end %>

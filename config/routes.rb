@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :restaurants
+  get "users/:id/dashboard", to: "users#manager_dashboard", as: :manager_dashboard
   root to: "home#index" 
 end
