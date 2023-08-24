@@ -1,0 +1,11 @@
+<main class="container">
+  <%= turbo_frame_tag "modal" do %>
+    <h1 class="display-6 ms-3 mt-2">
+      New Category
+    </h1>
+
+    <div class="modal-body">
+      <%= render "form", category: @category %>
+    </div>
+  <% end %>
+</main>
