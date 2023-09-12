@@ -1,0 +1,9 @@
+<% if current_user.restaurant.products.count > 1 %>
+  <%= turbo_stream.prepend "#{current_user.id}-products" do %>
+    <%= render @product %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.update "#{current_user.id}-products" do %>
+    <%= render @product %>
+  <% end %>
+<% end %>

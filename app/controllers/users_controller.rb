@@ -4,5 +4,6 @@ class UsersController < ApplicationController
   def manager_dashboard
     @restaurant = current_user.restaurant
     @categories = @restaurant ? @restaurant.categories : []
+    @products = @restaurant ? @restaurant.products : []
   end
 end

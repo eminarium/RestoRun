@@ -1,0 +1,38 @@
+<%= form_with(model: product, class: "row d-flex justify-content-between") do |form| %>
+  <% if product.errors.any? %>
+    <div style="color: red">
+      <h3><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved: </h3>
+      <ul>
+        <% product.errors.messages.flatten.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control mb-2", placeholder: "Title..." %>
+  </div>
+
+  <div>
+    <%= form.label :price, class: "form-label" %>
+    <%= form.number_field :price, class: "form-control mb-2", placeholder: "Price..." %>
+  </div>
+
+  <div>
+    <%= form.label :category, class: "form-label" %>
+    <%= form.collection_select :category_id, @categories, :id, :title, {}, { class: "form-control mb-2", placeholder: "Category..." } %>
+  </div>
+
+  <div>
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control mb-2", placeholder: "Description..." %>
+  </div>
+
+  <div>
+    <%= form.button type: :submit, class: "btn btn-primary" %>
+    <%= link_to "Cancel", products_path, data: { turbo_frame: "_top" }, class: "btn btn-warning" %>
+  </div>
+
+<% end %>

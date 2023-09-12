@@ -1,0 +1,38 @@
+<div class="row">
+  <% unless current_user.restaurant %>
+    <div class="alert alert-danger" role="alert">
+      Please, add a Restaurant info first...
+    </div>
+  <% end %>
+
+  <% unless current_user.restaurant.categories.any? %>
+    <div class="alert alert-danger" role="alert">
+      Please, add a Category first...
+    </div>
+  <% end %>
+
+
+  <div class="col">
+    <h1 class="display-6">Products</h1>
+  </div>
+  <div class="col-auto">
+    <% if current_user.restaurant && current_user.restaurant.categories.any? %>
+      <%= link_to new_product_path, class: "btn btn-primary", data: { turbo_frame: "modal" } do %>
+        <i class="fa-solid fa-plus"></i> New Product
+      <% end %>
+    <% else %>
+      <%= link_to manager_dashboard_path(current_user), class: "btn btn-primary" do %>
+        <i class="fa-solid fa-dashboard"></i> Dashboard
+      <% end %>
+    <% end %>
+  </div>
+</di>
+
+<ul class="list-group mt-3">
+  <%= turbo_frame_tag "#{current_user.id}-products" do %>
+    <% if @products.blank? %>
+      <p class="lead">No products yet...</p>
+    <% end %>
+    <%= render @products %>
+  <% end %>
+</ul>

@@ -1,4 +1,10 @@
 <div class="row">
+  <% unless current_user.restaurant %>
+    <div class="alert alert-danger" role="alert">
+      Please, add a Restaurant info first...
+    </div>
+  <% end %>
+
   <div class="col">
     <h1 class="display-6">Categories</h1>
   </div>
@@ -8,14 +14,9 @@
         <i class="fa-solid fa-plus"></i> New Category
       <% end %>
     <% else %>
-      <div class="d-flex justify-content-around">
-        <div class="col-md-12"><span class="badge bg-danger p-2">Add a restaurant first !!!</span></div>
-        <div class="col-md-12">
-        <%= link_to manager_dashboard_path(current_user), class: "btn btn-primary" do %>
-          <i class="fa-solid fa-dashboard"></i> Dashboard
-        <% end %>
-        </div>
-      </div>
+      <%= link_to manager_dashboard_path(current_user), class: "btn btn-primary" do %>
+        <i class="fa-solid fa-dashboard"></i> Dashboard
+      <% end %>
     <% end %>
   </div>
 </di>
@@ -23,7 +24,7 @@
 <ul class="list-group mt-3">
   <%= turbo_frame_tag "#{current_user.id}-categories" do %>
     <% if @categories.blank? %>
-      <h1 class="display-6">No categories yet...</h1>
+      <p class="lead">No categories yet...</p>
     <% end %>
     <%= render @categories %>
   <% end %>
