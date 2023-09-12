@@ -21,7 +21,13 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Categories</h5>
-        <p class="card-text">You have <%= @categories.count %> categories in total.</p>
+        <p class="card-text">
+          <% if @categories.empty? %>
+            You have no categories yet...
+          <% else %>
+            You have <%= @categories.count %> categories in total.
+          <% end %>
+        </p>
         <%= link_to "Go to Categories", categories_path, class: "btn btn-primary" %>
       </div>
     </div>

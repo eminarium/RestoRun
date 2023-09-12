@@ -3,8 +3,19 @@
     <h1 class="display-6">Categories</h1>
   </div>
   <div class="col-auto">
-    <%= link_to new_category_path, class: "btn btn-primary", data: { turbo_frame: "modal" } do %>
-      <i class="fa-solid fa-plus"></i> New Category
+    <% if current_user.restaurant %>
+      <%= link_to new_category_path, class: "btn btn-primary", data: { turbo_frame: "modal" } do %>
+        <i class="fa-solid fa-plus"></i> New Category
+      <% end %>
+    <% else %>
+      <div class="d-flex justify-content-around">
+        <div class="col-md-12"><span class="badge bg-danger p-2">Add a restaurant first !!!</span></div>
+        <div class="col-md-12">
+        <%= link_to manager_dashboard_path(current_user), class: "btn btn-primary" do %>
+          <i class="fa-solid fa-dashboard"></i> Dashboard
+        <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
 </di>

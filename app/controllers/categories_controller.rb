@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update]
 
   def index
-    @categories = current_user.restaurant.categories
+    @categories = current_user.restaurant ? current_user.restaurant.categories : []
   end
 
   def new

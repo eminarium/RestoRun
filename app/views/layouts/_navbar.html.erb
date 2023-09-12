@@ -1,0 +1,28 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <% if user_signed_in? %>
+      <%= link_to manager_dashboard_path(current_user), class: "navbar-brand" do %>
+        <i class="fa-solid fa-dashboard"></i>
+      <% end %>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+
+      <% if user_signed_in? %>
+        <span class="me-2 badge bg-secondary pt-2"><h6><%= current_user.email %></h6></span>
+        <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-primary me-2" do %>
+          Logout <i class="fa-solid fa-arrow-right-from-bracket ms-2"></i>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path, class: "btn btn-primary me-2" do %>
+          Login <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i>
+        <% end %>
+      <% end %>      
+
+    </div>
+  </div>
+</nav>
