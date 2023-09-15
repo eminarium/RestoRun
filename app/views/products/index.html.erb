@@ -5,7 +5,7 @@
     </div>
   <% end %>
 
-  <% unless current_user.restaurant.categories.any? %>
+  <% unless current_user.has_restaurant? && current_user.restaurant.categories.any? %>
     <div class="alert alert-danger" role="alert">
       Please, add a Category first...
     </div>
@@ -16,7 +16,7 @@
     <h1 class="display-6">Products</h1>
   </div>
   <div class="col-auto">
-    <% if current_user.restaurant && current_user.restaurant.categories.any? %>
+    <% if current_user.has_restaurant? && current_user.restaurant.categories.any? %>
       <%= link_to new_product_path, class: "btn btn-primary", data: { turbo_frame: "modal" } do %>
         <i class="fa-solid fa-plus"></i> New Product
       <% end %>

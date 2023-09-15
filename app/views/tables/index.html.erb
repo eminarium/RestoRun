@@ -1,5 +1,5 @@
 <div class="row">
-  <% unless current_user.restaurant %>
+  <% unless current_user.has_restaurant? %>
     <div class="alert alert-danger" role="alert">
       Please, add a Restaurant info first...
     </div>
@@ -9,7 +9,7 @@
     <h1 class="display-6">Tables</h1>
   </div>
   <div class="col-auto">
-    <% if current_user.restaurant %>
+    <% if current_user.has_restaurant? %>
       <%= link_to new_table_path, class: "btn btn-primary", data: { turbo_frame: "modal" } do %>
         <i class="fa-solid fa-plus"></i> New Table
       <% end %>
