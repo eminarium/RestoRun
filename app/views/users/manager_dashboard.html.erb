@@ -26,7 +26,7 @@
           <% if @categories.empty? %>
             You have no categories yet...
           <% else %>
-            You have <%= @categories.count %> categories in total.
+            You have <strong><%= @categories.count %></strong> categories in total.
           <% end %>
         </p>
         <%= link_to "Go to Categories", categories_path, class: "btn btn-primary" %>
@@ -42,10 +42,26 @@
           <% if @products.empty? %>
             You have no products yet...
           <% else %>
-            You have <%= @products.count %> products in total.
+            You have <strong><%= @products.count %></strong> products in total.
           <% end %>
         </p>
         <%= link_to "Go to Products", products_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Tables</h5>
+        <p class="card-text">
+          <% if @tables.empty? %>
+            You have no tables yet...
+          <% else %>
+            You have <strong><%= @tables.count %></strong> tables in total.
+          <% end %>
+        </p>
+        <%= link_to "Go to Tables", tables_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>

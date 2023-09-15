@@ -1,0 +1,31 @@
+<div class="row">
+  <% unless current_user.restaurant %>
+    <div class="alert alert-danger" role="alert">
+      Please, add a Restaurant info first...
+    </div>
+  <% end %>
+
+  <div class="col">
+    <h1 class="display-6">Tables</h1>
+  </div>
+  <div class="col-auto">
+    <% if current_user.restaurant %>
+      <%= link_to new_table_path, class: "btn btn-primary", data: { turbo_frame: "modal" } do %>
+        <i class="fa-solid fa-plus"></i> New Table
+      <% end %>
+    <% else %>
+      <%= link_to manager_dashboard_path(current_user), class: "btn btn-primary" do %>
+        <i class="fa-solid fa-dashboard"></i> Dashboard
+      <% end %>
+    <% end %>
+  </div>
+</di>
+
+<ul class="list-group mt-3">
+  <%= turbo_frame_tag "#{current_user.id}-tables" do %>
+    <% if @tables.blank? %>
+      <p class="lead">No tables yet...</p>
+    <% end %>
+    <%= render @tables %>
+  <% end %>
+</ul>

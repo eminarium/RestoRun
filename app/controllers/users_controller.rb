@@ -5,5 +5,6 @@ class UsersController < ApplicationController
     @restaurant = current_user.restaurant
     @categories = @restaurant ? @restaurant.categories : []
     @products = @restaurant ? @restaurant.products : []
+    @tables = @restaurant ? @restaurant.tables : []
   end
 end

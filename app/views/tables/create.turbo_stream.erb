@@ -1,0 +1,9 @@
+<% if current_user.restaurant.tables.count > 1 %>
+  <%= turbo_stream.prepend "#{current_user.id}-tables" do %>
+    <%= render @table %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.update "#{current_user.id}-tables" do %>
+    <%= render @table %>
+  <% end %>
+<% end %>

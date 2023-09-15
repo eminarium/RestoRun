@@ -1,0 +1,21 @@
+<%= turbo_frame_tag table do %>
+  <li class="list-group-item">
+    <div class="row mt-2">
+
+      <span class="col-md-2 col-sm-12">
+        <strong><%= table.title %></strong>
+      </span>
+
+      <span class="col-md col-sm-12 mb-3">
+        <%= table.description %>
+      </span>
+
+      <span class="col-auto mb-2">
+        <%= link_to edit_table_path(table), data: { turbo_frame: "modal" }, class: "btn btn-warning" do %>
+          <i class="fa-solid fa-pencil"></i>
+        <% end %>
+      </span>
+
+    </div>
+  </li>  
+<% end %>

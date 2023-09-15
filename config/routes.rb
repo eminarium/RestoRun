@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :restaurants
   resources :categories
   resources :products
+  resources :tables
   
   get "users/:id/dashboard", to: "users#manager_dashboard", as: :manager_dashboard
   root to: "home#index" 

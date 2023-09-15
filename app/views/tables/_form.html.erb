@@ -1,0 +1,27 @@
+<%= form_with(model: table, class: "row d-flex justify-content-between") do |form| %>
+  <% if table.errors.any? %>
+    <div style="color: red">
+      <h3><%= pluralize(table.errors.count, "error") %> prohibited this table from being saved: </h3>
+      <ul>
+        <% table.errors.messages.flatten.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control mb-2", placeholder: "Title..." %>
+  </div>
+
+  <div>
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control mb-2", placeholder: "Description..." %>
+  </div>
+
+  <div>
+    <%= form.button type: :submit, class: "btn btn-primary" %>
+    <%= link_to "Cancel", tables_path, data: { turbo_frame: "_top" }, class: "btn btn-warning" %>
+  </div>  
+<% end %>
