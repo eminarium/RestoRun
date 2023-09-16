@@ -50,6 +50,21 @@ RSpec.describe Category, type: :request do
 
       expect(response.body).to include(new_category.title)
     end
+
+    it "updates a Category when valid attributes provided" do
+      sign_in user
+      restaurant = create(:restaurant, user_id: user.id)
+      new_category = create(:category, restaurant_id: restaurant.id)
+      get categories_path
+
+      expect(response.body).to include(new_category.title)
+
+      put category_path(new_category), params: { category: { title: "Updated title" }}
+      get categories_path
+
+      expect(response.body).to include("Updated title")
+      expect(response.body).to_not include(new_category.title)
+    end
   end
 
 end
