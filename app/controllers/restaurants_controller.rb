@@ -16,7 +16,7 @@ class RestaurantsController < ApplicationController
 
     if @restaurant.save
       respond_to do |format|
-        format.html { redirect_to manager_dashboard_path, notice: "Restaurant was successfully added..." }
+        format.html { redirect_to manager_dashboard_path(current_user), notice: "Restaurant was successfully added..." }
         format.turbo_stream { flash.now[:notice] = "Restaurant was successfully added..." }
       end
     else
@@ -27,7 +27,7 @@ class RestaurantsController < ApplicationController
   def update
     if @restaurant.update(restaurant_params)
       respond_to do |format|
-        format.html { redirect_to manager_dashboard_path, notice: "Restaurant was successfully updated..." }
+        format.html { redirect_to manager_dashboard_path(current_user), notice: "Restaurant was successfully updated..." }
         format.turbo_stream { flash.now[:notice] = "Restaurant was successfully updated..." }
       end
     else
