@@ -28,7 +28,6 @@ RSpec.describe Category, type: :request do
   context "When Restaurant is created" do
     it "renders the index page with success" do
       sign_in user
-      create(:restaurant, user_id: user.id)
       get categories_path
 
       expect(response).to have_http_status(200)
