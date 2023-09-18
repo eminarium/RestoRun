@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :restrict_customer_user
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -17,4 +18,9 @@ class ApplicationController < ActionController::Base
       manager_dashboard_path(resource)
     end
   end
+
+  def restrict_customer_user
+    redirect_to restaurants_path if current_user.customer?
+  end
+
 end
