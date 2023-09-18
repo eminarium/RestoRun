@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :restrict_customer_user
 
   def index
-    @products = current_user.restaurant ? current_user.restaurant.products : []
+    @products = current_user.restaurant ? current_user.restaurant.products.includes(:category) : []
   end
 
   def new
