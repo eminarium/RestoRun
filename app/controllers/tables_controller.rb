@@ -1,6 +1,7 @@
 class TablesController < ApplicationController
 
   before_action :set_table, only: [:edit, :update]
+  before_action :restrict_customer_user
 
   def index
     @tables = current_user.restaurant ? current_user.restaurant.tables : []

@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   before_action :set_product, only: [:edit, :update]
+  before_action :restrict_customer_user
 
   def index
     @products = current_user.restaurant ? current_user.restaurant.products : []

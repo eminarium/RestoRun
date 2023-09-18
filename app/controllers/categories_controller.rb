@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
 
   before_action :set_category, only: [:edit, :update]
+  before_action :restrict_customer_user
 
   def index
     @categories = current_user.restaurant ? current_user.restaurant.categories : []
