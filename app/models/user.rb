@@ -11,4 +11,12 @@ class User < ApplicationRecord
   def has_restaurant?
     restaurant.present?
   end
+
+  def customer?
+    role == "customer"
+  end
+
+  def manager?
+    role == "manager"
+  end
 end

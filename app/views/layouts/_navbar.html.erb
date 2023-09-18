@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <% if user_signed_in? %>
+    <% if (user_signed_in? && current_user.manager?) %>
       <%= link_to manager_dashboard_path(current_user), class: "navbar-brand" do %>
         <i class="fa-solid fa-dashboard"></i>
       <% end %>

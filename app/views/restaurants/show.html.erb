@@ -1,0 +1,5 @@
+<p class="display-3 mb-5"><%= @restaurant.title %></p>
+
+<div class="row">
+  <%= render collection: @products, partial: "restaurants/product_card", as: :product %>
+</div>

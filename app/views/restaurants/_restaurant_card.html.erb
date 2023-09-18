@@ -1,0 +1,11 @@
+<div class="col-sm-4 mb-3">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= restaurant.title %></h5>
+      <p class="card-text">
+        <%= restaurant.description %>
+      </p>
+      <%= link_to "Go to Menu", restaurant_path(restaurant), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

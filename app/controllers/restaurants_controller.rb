@@ -1,6 +1,15 @@
 class RestaurantsController < ApplicationController
 
-  before_action :set_restaurant, only: [:edit, :update]
+  before_action :set_restaurant, only: [:edit, :update, :show]
+  skip_before_action :authenticate_user!, only: :index
+
+  def index
+    @restaurants = Restaurant.all
+  end
+
+  def show
+    @products = @restaurant.products
+  end
 
   def new
     redirect_to manager_dashboard_path(current_user) if current_user.restaurant.present?
