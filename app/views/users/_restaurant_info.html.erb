@@ -6,6 +6,14 @@
       <%= image_tag url_for('no-photo-icon.jpg'), style: 'width: 50%; height: 100px; object-fit:cover; object-position: right; border-radius: 3px' %>
     <% end %>
   </div>
+  <% if restaurant.qrcode.attached? %>
+    <div class="col-md-1 col-xs-12">
+      <div class="col mb-2"><strong>QR Code</strong></div>
+      <%= link_to restaurant_qr_code_path(restaurant), data: { turbo_frame: "modal" } do %>
+        <i class="fa-solid fa-qrcode fa-3x"></i>
+      <% end %>
+    </div>
+  <% end %>
   <div class="col-md col-xs-12">
     <p class="display-6"><%= restaurant.title %></p>
   </div>

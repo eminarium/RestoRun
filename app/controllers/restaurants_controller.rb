@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
 
-  before_action :set_restaurant, only: [:edit, :update, :show]
+  before_action :set_restaurant, only: [:edit, :update, :show, :qr_code]
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :restrict_customer_user, except: [:index, :show]
 
@@ -18,6 +18,9 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
+  end
+
+  def qr_code
   end
 
   def create
@@ -52,6 +55,6 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:title, :description, :is_halal, :is_kosher, :is_vegetarian, :user_id, :image)
+    params.require(:restaurant).permit(:title, :description, :is_halal, :is_kosher, :is_vegetarian, :user_id, :image, :qrcode)
   end
 end

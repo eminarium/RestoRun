@@ -9,6 +9,9 @@ gem "rails", "~> 7.0.6"
 # friendly id
 gem 'friendly_id', '~> 5.4.0'
 
+# QR code gem
+gem "rqrcode", "~> 2.0"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
