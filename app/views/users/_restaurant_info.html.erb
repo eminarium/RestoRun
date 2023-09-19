@@ -17,7 +17,7 @@
     <%= restaurant.description %>
   </div>
   <div class="col-md col-xs-1">
-    <%= link_to edit_restaurant_path(restaurant.id), data: { turbo_frame: "modal" }, class: "btn btn-warning" do %>
+    <%= link_to edit_restaurant_path(restaurant), data: { turbo_frame: "modal" }, class: "btn btn-warning" do %>
       <i class="fa-solid fa-pencil"></i>
     <% end %>
   </div>
