@@ -1,5 +1,16 @@
 class Restaurant < ApplicationRecord
 
+  extend FriendlyId
+  friendly_id :unique_hash, use: :slugged
+
+  # METHODS
+  def unique_hash
+    loop do
+      random_number = SecureRandom.hex(6)
+      break random_number unless Restaurant.exists?(slug: random_number)
+    end  
+  end
+
   # VALIDATIONS
   validates_presence_of :title
   validates_presence_of :user_id
