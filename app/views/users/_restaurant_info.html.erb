@@ -1,5 +1,12 @@
 <div class="row d-flex justify-content-around">
   <div class="col-md col-xs-12">
+    <% if restaurant.image.attached? %>
+      <%= image_tag restaurant.image, style: 'width: 50%; height: 100px; object-fit:cover; object-position: right; border-radius: 3px' %>
+    <% else %>
+      <%= image_tag url_for('no-photo-icon.jpg'), style: 'width: 50%; height: 100px; object-fit:cover; object-position: right; border-radius: 3px' %>
+    <% end %>
+  </div>
+  <div class="col-md col-xs-12">
     <p class="display-6"><%= restaurant.title %></p>
   </div>
   <div class="col-md col-xs-12">

@@ -15,6 +15,8 @@ class Restaurant < ApplicationRecord
   validates_presence_of :title
   validates_presence_of :user_id
 
+  has_one_attached :image
+  
   # ASSOCIATIONS
   belongs_to :user
   has_many :categories

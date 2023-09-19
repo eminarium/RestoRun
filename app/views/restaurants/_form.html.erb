@@ -20,6 +20,11 @@
       <%= form.text_area :description, class: "form-control mb-2", placeholder: "Description..." %>
     </div>
 
+    <div>
+      <%= form.label "Image", class: "form-label" %>
+      <%= form.file_field :image, class: "form-control mb-2", placeholder: "Logo..." %>
+    </div>
+
     <div class="form-check form-switch ms-3 mb-2">
       <%= form.label "Halal ?", for: "flexSwitchCheckIsHalal", class: "form-check-label" %>
       <%= form.check_box :is_halal, type: "checkbox", role: "switch", id: "flexSwitchCheckIsHalal", class: "form-check-input" %>
