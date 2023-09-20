@@ -1,6 +1,6 @@
 class TablesController < ApplicationController
 
-  before_action :set_table, only: [:edit, :update]
+  before_action :set_table, only: [:edit, :update, :qr_code]
   before_action :restrict_customer_user
 
   def index
@@ -28,6 +28,9 @@ class TablesController < ApplicationController
   def edit
   end
 
+  def qr_code
+  end
+
   def update
     if @table.update(table_params)
       respond_to do |format|
@@ -42,10 +45,10 @@ class TablesController < ApplicationController
   private
 
   def set_table
-    @table = Table.find(params[:id])
+    @table = Table.friendly.find(params[:id])
   end
 
   def table_params
-    params.require(:table).permit(:title, :description, :restaurant_id)
+    params.require(:table).permit(:title, :description, :restaurant_id, :qrcode)
   end
 end

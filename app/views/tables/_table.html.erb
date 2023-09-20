@@ -6,6 +6,14 @@
         <strong><%= table.title %></strong>
       </span>
 
+      <% if table.qrcode.attached? %>
+        <div class="col-md-1 col-xs-12 text-center">
+          <%= link_to table_qr_code_path(table), data: { turbo_frame: "modal" } do %>
+            <i class="fa-solid fa-qrcode fa-xl"></i>
+          <% end %>
+        </div>
+      <% end %>   
+
       <span class="col-md col-sm-12 mb-3">
         <%= table.description %>
       </span>

@@ -1,0 +1,12 @@
+<main class="container">
+  <%= turbo_frame_tag "modal" do %>
+    <div>
+      <p class="h6 text-center mt-5">QR Code for Table</p>
+      <h1 class="display-6 text-center"><%= @table.title %></h1>
+    </div>
+
+    <div class="modal-body">
+      <%= image_tag(url_for(@table.qrcode), style: 'width: 100%; object-fit:cover; object-position: right; border-radius: 3px') %>
+    </div>
+  <% end %>
+</main>
